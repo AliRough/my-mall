@@ -37,17 +37,24 @@ const [listMenu,setListMenu]=useState([
   hasChild:false,
   
 },
-  
+
 ])
+const[isNavOpen,setIsNavOpen]=useState(false)
+
+let openNavHandler=()=>{
+  setIsNavOpen((val)=>{
+    return !val
+  })
+}
 
 
   return (
 
    <>
-    <UpHeader {...listMenu}>
+    <UpHeader openNav={openNavHandler} {...listMenu}>
       <SearchBox  placeholder="نام کالا ، برند و  یا دسته مورد نظر خود را جستجو کنید ..." />
     </UpHeader>
-    <Nav {...listMenu}/>
+    <Nav nav={isNavOpen} {...listMenu}/>
    </>
   )
 }
