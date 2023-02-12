@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineUser,AiOutlineShoppingCart} from 'react-icons/ai'
 import SearchBox from './SearchBox'
 
 
 export default function Nav(props) {
+  const [mainSubItem,setMainSubItem]=useState(props[0].children[0].children)
+  const [mainItem,setMainItem]=useState(props[0].children[0].title)
+  let changeItemHandler=(sub)=>{
+    setMainItem(sub.title)
+    setMainSubItem(sub.children)
+  }
   return (
 <nav className="px-2 bg-white border-gray-200">
   <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -31,7 +37,7 @@ export default function Nav(props) {
             return(
               <li>
               <a id="dropdownNavbarLink"
-                className="flex items-center justify-between w-full py-2  font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 md:w-auto ml-4">
+                className="flex items-left justify-between w-full   font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 md:w-auto ml-4">
                   <div className='flex items-center'>{list[1].icon}
                   <p className='mx-3  order-1'>{list[1].title}</p> </div>
                   {
@@ -44,58 +50,62 @@ export default function Nav(props) {
                 
                 {
                     list[1].hasChild&& (
+                      <>
                       <div id="dropdownNavbar" 
-                      className="hidden md:absolute relative  font-normal bg-white  shadow md:w-44  ">
-                        <ul className="py-2 text-sm text-gray-700 mr-5 md:mr-0" >
-                      {
-                        Object.entries(list[1].children).map(sub=>{
-                          return(
-                                <li className=' relative'>
-                                  <a href="#" className="flex px-4 py-2 hover:bg-gray-100 ">
-                                    <p className='order-1'>{sub[1].title}</p>
-                                    <span className='order-2'> {
-                                    sub[1].hasChild&& (
-                                    <svg className="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                                    )
-                                    }</span>
-                                  </a>
-                                  {/* subitems */}
-                                
-                                  {
-                                      sub[1].hasChild&& (
-                                        <div id="dropdownNavbar" 
-                                        className="hidden md:absolute relative md:right-full top-0 font-normal bg-white  shadow md:w-44 "
-                                        >
-                                          <ul className=" py-2 text-sm text-gray-700 mr-5 md:mr-0 " >
-                                        {Object.entries(sub[1].children).map(subSub=>{
+                      className="hidden md:absolute w-11/12 relative max-h-[80vh]  font-normal bg-white  shadow  overflow-hidden   ">
+                         
+                        <ul dir='rtl' className=" py-2 text-sm text-gray-700 md:w-48  mr-5 md:mr-0 h-full" >
+                          {
+                            Object.entries(list[1].children).map(sub=>{
+                              return(
+                                    <li className=' relative' onMouseEnter={()=>changeItemHandler(sub[1])} >
+                                      <a href="#" className="flex px-4 py-4 hover:bg-gray-100 items-center  space-x-2">
+                                        <p className='order-2'>{sub[1].title}</p>
+                                        <span className='order-1'> {
+                                          sub[1].icon
+                                        }</span>
+                                      </a>
+                                    </li>
+                                    
+                                      
+                              )
+                            })
+                          } 
+                        </ul>
+                        <div className="flex flex-col max-h-[80vh]">
+                         
+                          <a href="#" className=' my-5 text-xl  '> تمامی محصولات {mainItem}</a>
+                          <div className="flex">
+                            <div className=' flex flex-col flex-wrap max-h-[80vh] '>
+                            {
+                              mainSubItem.map(item=>{
+                                return(
+                                <>
+                                    <h3 class="mb-6 text-xs font-semibold mx-3  ">{item.title} </h3>
+                                    
+                                      {
+                                        item.children.map(des=>{
                                           return(
-                                                <li >
-                                                  <a href="#" className="flex px-4 py-2 hover:bg-gray-100 ">
-                                                    {subSub[1].title}
-                                                    {
-                                                    subSub[1].hasChild&& (
-                                                    <svg className="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                                                    )
-                                                    }
-                                                  </a>
-                                                </li>
-                                                )
-                                        })
+                                            <li class="mb-4 mx-3 ">
+                                              <a href="https://github.com/themesberg/flowbite" class="hover:underline ">{des}</a>
+                                            </li>
+                                          )
+                                          })
                                       }
-
-                                        </ul>
-                                      </div>       
-                                    )
-                                    }
-
-                                </li>
-                                
-                                  
-                          )
-                        })
-                      } 
-                        </ul>            
-                    </div>         
+                                      
+                                      
+                                      
+                              </> 
+                                )
+                              })
+                            }
+                            </div>
+                          </div>
+                        </div>
+                            
+                    </div> 
+                            
+                      </>
                   )
                   }
                   
@@ -104,6 +114,7 @@ export default function Nav(props) {
           })
         }
       </ul>
+      
     </div>
   </div>
 </nav>

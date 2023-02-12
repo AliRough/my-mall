@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 li:hover>div{
-    display: block;
+    display: flex;
 }
