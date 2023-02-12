@@ -35,9 +35,9 @@ export default function Nav(props) {
           Object.entries(props).map(list=>{
             
             return(
-              <li>
+              <li className='transition-transform'>
               <a id="dropdownNavbarLink"
-                className="flex items-left justify-between w-full   font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 md:w-auto ml-4">
+                className="flex items-left justify-between w-full   font-medium text-gray-700  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 md:hover:border-b-2 md:hover:border-b-red-700  md:w-auto ml-4   ">
                   <div className='flex items-center'>{list[1].icon}
                   <p className='mx-3  order-1'>{list[1].title}</p> </div>
                   {
@@ -52,7 +52,7 @@ export default function Nav(props) {
                     list[1].hasChild&& (
                       <>
                       <div id="dropdownNavbar" 
-                      className="hidden md:absolute w-11/12 relative max-h-[80vh]  font-normal bg-white  shadow  overflow-hidden   ">
+                      className="hidden md:absolute w-11/12 relative max-h-[80vh]  font-normal bg-white  shadow overflow-y-auto    ">
                          
                         <ul dir='rtl' className=" py-2 text-sm text-gray-700 md:w-48  mr-5 md:mr-0 h-full" >
                           {
@@ -61,7 +61,7 @@ export default function Nav(props) {
                                     <li className=' relative' onMouseEnter={()=>changeItemHandler(sub[1])} >
                                       <a href="#" className="flex px-4 py-4 hover:bg-gray-100 items-center  space-x-2">
                                         <p className='order-2'>{sub[1].title}</p>
-                                        <span className='order-1'> {
+                                        <span className='order-1 text-lg'> {
                                           sub[1].icon
                                         }</span>
                                       </a>
@@ -72,22 +72,22 @@ export default function Nav(props) {
                             })
                           } 
                         </ul>
-                        <div className="flex flex-col max-h-[80vh]">
+                        <div className="flex flex-col max-h-[90vh]">
                          
                           <a href="#" className=' my-5 text-xl  '> تمامی محصولات {mainItem}</a>
                           <div className="flex">
-                            <div className=' flex flex-col flex-wrap max-h-[80vh] '>
+                            <div className=' flex flex-col flex-wrap max-h-[60vh] '>
                             {
                               mainSubItem.map(item=>{
                                 return(
                                 <>
-                                    <h3 class="mb-6 text-xs font-semibold mx-3  ">{item.title} </h3>
+                                    <h3 class="mb-6 text-xs font-semibold mx-3 px-2 border-r-2 border-red-600 hover:text-red-700  ">{item.title} </h3>
                                     
                                       {
                                         item.children.map(des=>{
                                           return(
-                                            <li class="mb-4 mx-3 ">
-                                              <a href="https://github.com/themesberg/flowbite" class="hover:underline ">{des}</a>
+                                            <li class="mb-4 mx-3 hover:text-red-700 ">
+                                              <a href="https://github.com/themesberg/flowbite" class=" ">{des}</a>
                                             </li>
                                           )
                                           })
