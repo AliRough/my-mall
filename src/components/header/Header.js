@@ -1,6 +1,6 @@
 import React ,{useState} from 'react'
 import UpHeader from './in head/UpHeader'
-import Nav from './in head/Nav'
+import NavBar from './in head/NavBar.jsx'
 import SearchBox from './in head/SearchBox'
 import {AiFillHome, AiFillQuestionCircle,AiOutlineLaptop,AiOutlineTool} from 'react-icons/ai'
 import {SlLayers } from 'react-icons/sl'
@@ -100,7 +100,9 @@ const [listMenu,setListMenu]=useState([
 const[isNavOpen,setIsNavOpen]=useState(false)
 
 let openNavHandler=()=>{
+  console.log('clicked');
   setIsNavOpen((val)=>{
+    console.log(val);
     return !val
   })
 }
@@ -113,20 +115,21 @@ let openNavHandler=()=>{
     <UpHeader openNav={openNavHandler} {...listMenu}>
       <SearchBox  placeholder="نام کالا ، برند و  یا دسته مورد نظر خود را جستجو کنید ..." />
     </UpHeader>
-    <Nav nav={isNavOpen}   {...listMenu}/>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
-    <div className=' h-96'>fgngopkf</div>
+
+    <NavBar nav={isNavOpen} closeSideBar={openNavHandler}   {...listMenu} />
+    <div className=' h-96 text-center '>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
+    <div className=' h-96 text-center'>Testing</div>
    </>
   )
 }

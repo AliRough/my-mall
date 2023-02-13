@@ -4,3 +4,6 @@
 li:hover>div{
     display: flex;
 }
+.active>ul{
+    display: block;
+}

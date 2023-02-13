@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
 import { AiOutlineShoppingCart ,AiOutlineUser } from 'react-icons/ai';
+import { BsQuestionSquare } from 'react-icons/bs';
 
 
 export default function UpHeader(props) {
@@ -9,7 +10,7 @@ export default function UpHeader(props) {
   return (
     <header>
     <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
-        <div className="flex justify-between ">
+        <div className="flex justify-between items-center ">
             <button id='ay-navBtn' 
             onClick={props.openNav}
             type="button" 
@@ -17,11 +18,11 @@ export default function UpHeader(props) {
                 <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
             </button>
             <div className=' ' >
-                <a href="#" className="flex items-center ">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                    <span className="self-center text-xl font-semibold whitespace-nowrap ">Flowbite</span>
+                <a href="#" >
+                    <img src="images/logo.svg"  alt="Logo" />
                 </a>  
             </div> 
+            <BsQuestionSquare className=' text-2xl md:hidden '/>
             <div className='w-2/4 hidden md:block '>
 
             {props.children}
