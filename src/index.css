@@ -1,9 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '/node_modules/vazirmatn/Vazirmatn-font-face.css';
 li:hover>div{
     display: flex;
 }
 .active>ul{
     display: block;
+}
+.ay-slider{
+    background-image: url(./../public/images/upSlider/myBaby.jpg);
 }

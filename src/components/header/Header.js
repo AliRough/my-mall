@@ -1,135 +1,24 @@
-import React ,{useState} from 'react'
-import UpHeader from './in head/UpHeader'
-import NavBar from './in head/NavBar.jsx'
-import SearchBox from './in head/SearchBox'
-import {AiFillHome, AiFillQuestionCircle,AiOutlineLaptop,AiOutlineTool} from 'react-icons/ai'
-import {SlLayers } from 'react-icons/sl'
-import {FaShoppingBasket, FaBaby} from 'react-icons/fa'
-import {BsPhone} from 'react-icons/bs'
-import {TbShirt} from 'react-icons/tb'
-import {GiShoppingCart} from 'react-icons/gi'
-import {MdLocalFlorist} from 'react-icons/md'
-
+import React, { useState } from "react";
+import UpHeader from "./in head/UpHeader";
+import NavBar from "./in head/NavBar.jsx";
+import SearchBox from "./in head/SearchBox";
+import { headerData } from "./../../Datas/headerData";
 
 export default function Header() {
-const [listMenu,setListMenu]=useState([
- { title:'دسته بندی ',
-  icon:<SlLayers/>,
-  hasChild:true,
-  children:[
-    {
-      title:"موبایل",
-      icon:<BsPhone/>,
-      children:[
+  const [listMenu, setListMenu] = useState(headerData);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-        {
-          title:'برند های مختلف گوشی',
-          children:[" گوشی اپل",' گوشی سامسونگ',' گوشی شیائومی',' گوشی نوکیا',' گوشی هواوی',' گوشی آنر',' گوشی موتورولا',' گوشی جی پلاس',' گوشی وان پلاس',' گوشی جی ال ایکس',' گوشی بلو',' گوشی کاترپیلار', ' گوشی ویوو']
-          
-        },
-        {
-          title:'برند های مختلف گوشی',
-          children:['گوشی اپل','گوشی سامسونگ','گوشی هواوی','گوشی هواوی','گوشی هواوی','گوشی هواوی','گوشی هواوی']
-          
-        },
-        {
-          title:'برند های مختلف گوشی',
-          children:['گوشی اپل','گوشی سامسونگ','گوشی هواوی','گوشی هواوی','گوشی هواوی','گوشی هواوی','گوشی هواوی']
-          
-        },
-       
-      ],
-
-    },
-    {
-      title:"کالای دیجیتال",
-      icon:<AiOutlineLaptop/>,
-      children:[],
-
-    },
-    {
-      title:"خودرو ،ابزار و تجهیزات صنعتی",
-      icon:<AiOutlineTool/>,
-      children:[],
-
-    },
-    {
-      title:"مد و پوشاک",
-      icon:<TbShirt/>,
-      children:[],
-
-    },
-    {
-      title:"کالاهای سوپر مارکتی",
-      icon:<GiShoppingCart/>,
-      children:[],
-
-    },
-    {
-      title:"محصولات بومی محلی",
-      icon:<MdLocalFlorist/>,
-      children:[],
-
-    },
-    {
-      title:"اسباب بازی کودک و نوزاد",
-      icon:<FaBaby/>,
-      children:[],
-
-    },
-  ]
-},
- { title:'صفحه اصلی ',
-  icon:<AiFillHome/>,
-  hasChild:false,
-  
-  
-},
- { title:'محصولات ما ',
-  icon:<FaShoppingBasket/>,
-  hasChild:false,
-  
-},
- { title:'سوالی دارید ',
-  icon:<AiFillQuestionCircle/>,
-  hasChild:false,
-  
-},
-
-])
-const[isNavOpen,setIsNavOpen]=useState(false)
-
-let openNavHandler=()=>{
-  console.log('clicked');
-  setIsNavOpen((val)=>{
-    console.log(val);
-    return !val
-  })
-}
-
-
+  let openNavHandler = () => {
+    setIsNavOpen((val) => !val);
+  };
 
   return (
+    <header className="px-4 lg:px-6 py-2.5">
+      <UpHeader openNav={openNavHandler} {...listMenu}>
+        <SearchBox placeholder="نام کالا ، برند و  یا دسته مورد نظر خود را جستجو کنید ..." />
+      </UpHeader>
 
-   <>
-    <UpHeader openNav={openNavHandler} {...listMenu}>
-      <SearchBox  placeholder="نام کالا ، برند و  یا دسته مورد نظر خود را جستجو کنید ..." />
-    </UpHeader>
-
-    <NavBar nav={isNavOpen} closeSideBar={openNavHandler}   {...listMenu} />
-    <div className=' h-96 text-center '>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-    <div className=' h-96 text-center'>Testing</div>
-   </>
-  )
+      <NavBar nav={isNavOpen} closeSideBar={openNavHandler} {...listMenu} />
+    </header>
+  );
 }
