@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "./inMain/Slider";
+import Slider2 from "./inMain/Slider2";
 import UserSelection from "./inMain/UserSelection";
 
 
@@ -19,6 +20,9 @@ export default function Main() {
         </a>
       </Slider>
       <UserSelection/>
+      <Slider2>
+
+      </Slider2>
     </>
   );
 }

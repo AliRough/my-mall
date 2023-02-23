@@ -11,3 +11,6 @@ li:hover>div{
 .ay-slider{
     background-image: url(./../public/images/upSlider/myBaby.jpg);
 }
+.swiper-slide{
+    width: auto !important ;
+}
