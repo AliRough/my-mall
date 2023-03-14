@@ -10,22 +10,26 @@ import "swiper/swiper-bundle.css";
 
 // import required modules
 import { Navigation } from "swiper";
+import NextButton from "./NextButton";
+import PervButton from "./PervButton";
+import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 // import addClasses from "swiper/core/classes/addClasses";    ///     what the fuck
 
 export default function Slider2() {
   const [swiperRef, setSwiperRef] = useState(null);
   const [sliderData, setSliderData] = useState(slider2);
-// console.log(addClasses());
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <>
-
       <Swiper
         onSwiper={setSwiperRef}
         centeredSlides={true}
-        navigation={true}
         modules={[Navigation]}
         breakpoints={{
-          0:{
+          0: {
             slidesPerView: 2,
           },
           640: {
@@ -38,7 +42,7 @@ export default function Slider2() {
             slidesPerView: 8,
           },
         }}
-        className="Swiper2 mySwiper bg-red-600 mx-4 rounded-2xl mb-96 p-2 "
+        className="Swiper2 mySwiper bg-red-600 mx-4 rounded-2xl p-2 "
       >
         <SwiperSlide>
           <div className=" w-40 mx-1 h-48 p-1  text-center">
@@ -82,12 +86,19 @@ export default function Slider2() {
               <img src={slide.src} className="m-0 flex" />
               <div>
                 <div className="flex justify-between items-center">
-                  <span className="bg-red-600 rounded-full text-white text-sm mx-1 p-1 ">
+                  <span className="bg-red-600 rounded-full text-white text-xs mx-1 p-1 ">
                     {Math.round(100 - (slide.sale * 100) / slide.price)} %
                   </span>
-                  <span className="mx-2">{slide.sale}</span>
+                  <span className="flex mx-2">
+                    <span>{numberWithCommas(slide.sale)}</span>
+                    <div className="text-sm">
+                      تومان
+                    </div>
+                  </span>
                 </div>
-                <p className="text-gray-400  line-through">{slide.price}</p>
+                <p className="text-gray-400  line-through">
+                  {numberWithCommas(slide.price)}
+                </p>
               </div>
             </div>
           </SwiperSlide>
@@ -100,7 +111,6 @@ export default function Slider2() {
                 fill="currentColor"
                 strokeWidth="0"
                 viewBox="0 0 24 24"
-                
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <polyline
@@ -114,6 +124,13 @@ export default function Slider2() {
             <p>مشاهده همه</p>
           </div>
         </SwiperSlide>
+
+        <NextButton className="absolute z-10 top-[45%] right-5 md:block hidden bg-white mx-1 p-2 rounded-full shadow-lg  border border-gray-400">
+          <GrFormNextLink className=" md:text-2xl" />
+        </NextButton>
+        <PervButton className="absolute z-10 top-[45%] left-5 md:block hidden bg-white mx-1 p-2 rounded-full shadow-lg  border border-gray-400">
+          <GrFormPreviousLink className=" md:text-2xl" />
+        </PervButton>
       </Swiper>
     </>
   );

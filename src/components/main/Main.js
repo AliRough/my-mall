@@ -15,7 +15,7 @@ export default function Main() {
           />
           <span className="absolute  overflow-hidden top-0  h-full ">
             <img
-              className=" md:h-auto max-w-none md:w-full h-full"
+              className=" md:h-auto max-w-none md:w-full h-full "
               src="./images/upslider/myBaby.jpg"
               alt=""
             />
@@ -29,7 +29,7 @@ export default function Main() {
           />
           <span className="absolute  overflow-hidden top-0  h-full   ">
             <img
-              className=" md:h-auto max-w-none md:w-full h-full"
+              className=" md:h-auto max-w-none md:w-full h-full "
               src="./images/upslider/zelot.jpg"
               alt=""
             />
@@ -43,7 +43,7 @@ export default function Main() {
           />
           <span className="absolute  overflow-hidden top-0  h-full ">
             <img
-              className=" md:h-auto max-w-none md:w-full h-full"
+              className=" md:h-auto max-w-none md:w-full h-full "
               src="./images/upslider/myBaby.jpg"
               alt=""
             />
@@ -57,7 +57,7 @@ export default function Main() {
           />
           <span className="absolute  overflow-hidden top-0  h-full   ">
             <img
-              className=" md:h-auto max-w-none md:w-full h-full"
+              className=" md:h-auto max-w-none md:w-full h-full "
               src="./images/upslider/zelot.jpg"
               alt=""
             />
@@ -71,7 +71,7 @@ export default function Main() {
           />
           <span className="absolute  overflow-hidden top-0  h-full ">
             <img
-              className=" md:h-auto max-w-none md:w-full h-full"
+              className=" md:h-auto max-w-none md:w-full h-full "
               src="./images/upslider/myBaby.jpg"
               alt=""
             />
@@ -85,7 +85,7 @@ export default function Main() {
           />
           <span className="absolute  overflow-hidden top-0  h-full   ">
             <img
-              className=" md:h-auto max-w-none md:w-full h-full"
+              className=" md:h-auto max-w-none md:w-full h-full "
               src="./images/upslider/zelot.jpg"
               alt=""
             />
