@@ -4,9 +4,9 @@ import {FiMoreHorizontal} from 'react-icons/fi'
 export default function UserSelection() {
   const [selection, setSelection] = useState(userSelection);
   return (
-    <div className="flex flex-wrap  w-screen justify-around md:px-20">
-      {selection.map((select) => (
-        <div className=" w-1/4 md:w-fit">
+    <div className="flex flex-wrap  w-screen justify-around md:px-20 my-4">
+      {selection.map((select , index) => (
+        <div key={index} className=" w-1/4 md:w-fit">
           <img
             src={select.src}
             className="mx-auto "

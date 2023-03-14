@@ -65,10 +65,10 @@ export default function NavBar(props) {
             </div>
             <div className="mx-3 h-screen">
               <ul className=" border-y">
-                {Object.entries(props).map((list) => {
+                {Object.entries(props).map((list, index) => {
                   if (list[0] !== "0") {
                     return (
-                      <li className="transition-transform">
+                      <li key={index} className="transition-transform">
                         <a href="#" className="flex items-center my-2 ">
                           <span className="ml-2">{list[1].icon}</span>
                           <span>{list[1].title}</span>
@@ -80,9 +80,9 @@ export default function NavBar(props) {
               </ul>
               <ul className="">
                 <h3 className="font-bold mt-2">{props[0].title}</h3>
-                {Object.entries(props[0].children).map((sub) => {
+                {Object.entries(props[0].children).map((sub, index) => {
                   return (
-                    <li className="my-4 ">
+                    <li key={index} className="my-4 ">
                       <div
                         className="flex justify-between hover:text-red-600"
                         onClick={(e) => showLiHandler(e)}
@@ -110,51 +110,55 @@ export default function NavBar(props) {
                         >
                           <li className="my-3 pt-3">همه موارد این دسته</li>
                         </a>
-                        {Object.entries(sub[1].children).map((subSub) => {
-                          return (
-                            <li>
-                              <div
-                                className="flex justify-between hover:text-red-600 my-2"
-                                onClick={(e) => showLiHandler(e)}
-                              >
-                                <span>{subSub[1].title}</span>
-                                <svg
-                                  className=""
-                                  width="20px"
-                                  aria-hidden="true"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
+                        {Object.entries(sub[1].children).map(
+                          (subSub, index) => {
+                            return (
+                              <li key={index}>
+                                <div
+                                  className="flex justify-between hover:text-red-600 my-2"
+                                  onClick={(e) => showLiHandler(e)}
                                 >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                  ></path>
-                                </svg>
-                              </div>
-                              <ul className="hidden bg-gray-200 rounded px-2 ">
-                                <a
-                                  href="#"
-                                  className=" text-sm text-gray-500 font-semibold "
-                                >
-                                  <li className="my-3 pt-3">همه موارد این دسته</li>
-                                </a>
-                                {subSub[1].children.map((liItem) => {
-                                  return (
-                                    <li>
-                                      <div className="flex justify-between hover:text-red-600">
-                                        <span className="my-2 text-sm font-semibold">
-                                          {liItem}
-                                        </span>
-                                      </div>
+                                  <span>{subSub[1].title}</span>
+                                  <svg
+                                    className=""
+                                    width="20px"
+                                    aria-hidden="true"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clipRule="evenodd"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <ul className="hidden bg-gray-200 rounded px-2 ">
+                                  <a
+                                    href="#"
+                                    className=" text-sm text-gray-500 font-semibold "
+                                  >
+                                    <li className="my-3 pt-3">
+                                      همه موارد این دسته
                                     </li>
-                                  );
-                                })}
-                              </ul>
-                            </li>
-                          );
-                        })}
+                                  </a>
+                                  {subSub[1].children.map((liItem, index) => {
+                                    return (
+                                      <li key={index}>
+                                        <div className="flex justify-between hover:text-red-600">
+                                          <span className="my-2 text-sm font-semibold">
+                                            {liItem}
+                                          </span>
+                                        </div>
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </li>
+                            );
+                          }
+                        )}
                       </ul>
                     </li>
                   );
@@ -165,13 +169,11 @@ export default function NavBar(props) {
         </div>
         {/*end sideBar*/}
         {/*start navbar*/}
-        <div
-          className={` hidden items-center justify-between md:flex w-full `}
-        >
+        <div className={` hidden items-center justify-between md:flex w-full `}>
           <ul className="flex  py-3   text-sm rounded-lg font-medium bg-white z-50">
-            {Object.entries(props).map((list) => {
+            {Object.entries(props).map((list, index) => {
               return (
-                <li className="transition-transform  ease-in ">
+                <li key={index} className="transition-transform  ease-in ">
                   <a className="flex items-left font-medium text-gray-500 hover:text-red-700 p-0 border-b-2 border-b-transparent hover:border-b-red-700 ml-4 duration-500 ">
                     <div className="flex items-center">
                       {list[1].icon}
@@ -204,11 +206,17 @@ export default function NavBar(props) {
                           dir="rtl"
                           className=" py-2 text-sm text-gray-700 md:w-48  mr-5 md:mr-0 h-full"
                         >
-                          {Object.entries(list[1].children).map((sub) => {
-                            return (
-                              <SubLi onChengeSub={changeItemHandler} {...sub} />
-                            );
-                          })}
+                          {Object.entries(list[1].children).map(
+                            (sub, index) => {
+                              return (
+                                <SubLi
+                                  key={index}
+                                  onChengeSub={changeItemHandler}
+                                  {...sub}
+                                />
+                              );
+                            }
+                          )}
                         </ul>
                         <div className="flex flex-col max-h-[90vh]">
                           <a href="#" className=" my-5 text-xl  ">
@@ -217,26 +225,24 @@ export default function NavBar(props) {
                           </a>
                           <div className="flex">
                             <div className=" flex flex-col flex-wrap max-h-[60vh] ">
-                              {mainSubItem.children.map((item) => {
+                              {mainSubItem.children.map((item, index) => {
                                 return (
-                                  <>
+                                  <React.Fragment key={index}>
                                     <h3 className="mb-6 text-xs font-semibold mx-3 px-2 border-r-2 border-red-600 hover:text-red-700  ">
                                       {item.title}{" "}
                                     </h3>
 
-                                    {item.children.map((des) => {
+                                    {item.children.map((des, index) => {
                                       return (
-                                        <li className="mb-4 mx-3 hover:text-red-700 ">
-                                          <a
-                                            href="https://github.com/themesberg/flowbite"
-                                            className=" "
-                                          >
-                                            {des}
-                                          </a>
-                                        </li>
+                                        <span
+                                          key={index}
+                                          className="mb-4 mx-3 hover:text-red-700 "
+                                        >
+                                          <a href="#">{des}</a>
+                                        </span>
                                       );
                                     })}
-                                  </>
+                                  </React.Fragment>
                                 );
                               })}
                             </div>

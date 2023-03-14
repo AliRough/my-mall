@@ -8,9 +8,10 @@ li:hover>div{
 .active>ul{
     display: block;
 }
-.ay-slider{
-    background-image: url(./../public/images/upSlider/myBaby.jpg);
-}
+
 .swiper-slide{
     width: auto !important ;
 }
+/* .Swiper2 .swiper-button-prev{
+background: #000;
+} */

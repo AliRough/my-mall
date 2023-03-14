@@ -5,17 +5,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/swiper-bundle.css";
+// import "swiper/css/hash-navigation";
 
 // import required modules
 import { Navigation } from "swiper";
+// import addClasses from "swiper/core/classes/addClasses";    ///     what the fuck
 
 export default function Slider2() {
   const [swiperRef, setSwiperRef] = useState(null);
   const [sliderData, setSliderData] = useState(slider2);
-
+// console.log(addClasses());
   return (
     <>
+
       <Swiper
         onSwiper={setSwiperRef}
         centeredSlides={true}
@@ -35,7 +38,7 @@ export default function Slider2() {
             slidesPerView: 8,
           },
         }}
-        className="mySwiper bg-red-600 mx-4 rounded-md mb-96 p-2 "
+        className="Swiper2 mySwiper bg-red-600 mx-4 rounded-2xl mb-96 p-2 "
       >
         <SwiperSlide>
           <div className=" w-40 mx-1 h-48 p-1  text-center">
@@ -57,7 +60,7 @@ export default function Slider2() {
               <svg
                 stroke="currentColor"
                 fill="currentColor"
-                stroke-width="0"
+                strokeWidth="0"
                 viewBox="0 0 24 24"
                 height="1em"
                 width="1em"
@@ -65,7 +68,7 @@ export default function Slider2() {
               >
                 <polyline
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   points="9 6 15 12 9 18"
                   transform="matrix(-1 0 0 1 24 0)"
                 ></polyline>
@@ -95,14 +98,14 @@ export default function Slider2() {
               <svg
                 stroke="currentColor"
                 fill="currentColor"
-                stroke-width="0"
+                strokeWidth="0"
                 viewBox="0 0 24 24"
                 
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <polyline
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   points="9 6 15 12 9 18"
                   transform="matrix(-1 0 0 1 24 0)"
                 ></polyline>
